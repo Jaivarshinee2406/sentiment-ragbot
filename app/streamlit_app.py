@@ -1,17 +1,9 @@
-"""
-Streamlit UI for the sentiment RAG bot. Runs entirely on your local
-free models - no API key, no MySQL required.
-
-Usage:
-    streamlit run app/streamlit_app.py
-"""
 import csv
 import sys
 from pathlib import Path
 
 import streamlit as st
 
-# Allow running `streamlit run app/streamlit_app.py` from the project root
 sys.path.append(str(Path(__file__).parent.parent))
 
 from app.sentiment import classify_ticket
@@ -26,7 +18,6 @@ if "analyzed_tickets" not in st.session_state:
 
 tab1, tab2, tab3 = st.tabs(["Analyze a ticket", "Ask a question (RAG)", "Bulk load sample data"])
 
-# --- Tab 1: analyze a single ticket ---
 with tab1:
     st.subheader("Classify a single ticket")
     ticket_text = st.text_area("Paste a support ticket:", height=120,
@@ -53,7 +44,6 @@ with tab1:
         st.subheader("Analyzed so far")
         st.dataframe(st.session_state.analyzed_tickets, use_container_width=True)
 
-# --- Tab 2: RAG question answering ---
 with tab2:
     st.subheader("Ask a question about indexed tickets")
     st.caption("Answers are generated from tickets you've analyzed or bulk-loaded (Chroma index).")
@@ -75,7 +65,6 @@ with tab2:
         else:
             st.warning("Please type a question first.")
 
-# --- Tab 3: bulk load sample data ---
 with tab3:
     st.subheader("Bulk load and index sample tickets")
     csv_path = Path(__file__).parent.parent / "data" / "sample_tickets.csv"
