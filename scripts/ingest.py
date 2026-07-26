@@ -1,10 +1,3 @@
-"""
-Batch pipeline: reads data/sample_tickets.csv, classifies each ticket with
-Claude, writes structured results to MySQL, and indexes embeddings in Chroma.
-
-Usage:
-    python -m scripts.ingest
-"""
 import csv
 import time
 from pathlib import Path
@@ -31,7 +24,7 @@ def run():
         index_ticket(ticket_id, text, classification)
 
         print(f"[{i}/{len(reader)}] {ticket_id[:8]} -> {classification['sentiment']} / {classification['category']}")
-        time.sleep(0.2)  # gentle pacing to avoid rate limits on large batches
+        time.sleep(0.2) 
 
     print("Done. Data is in MySQL and Chroma is indexed.")
 
