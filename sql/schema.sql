@@ -11,7 +11,6 @@ CREATE TABLE IF NOT EXISTS tickets (
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
--- Handy view for Power BI: daily sentiment counts
 CREATE OR REPLACE VIEW daily_sentiment_summary AS
 SELECT
     DATE(created_at) AS day,
