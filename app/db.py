@@ -1,7 +1,3 @@
-"""
-MySQL persistence layer. Run sql/schema.sql once to create the table
-(or let init_db() do it for you).
-"""
 from sqlalchemy import create_engine, text
 from app.config import MYSQL_HOST, MYSQL_PORT, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DATABASE
 
