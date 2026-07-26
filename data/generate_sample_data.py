@@ -1,7 +1,3 @@
-"""
-Generates a CSV of simulated customer support tickets across categories
-and sentiment tones, for testing the pipeline before you have real data.
-"""
 import csv
 import random
 import uuid
@@ -84,8 +80,8 @@ def generate_tickets(n: int = 100):
         rows.append({
             "ticket_id": str(uuid.uuid4()),
             "text": text,
-            "true_category": category,     # ground truth, for evaluating your classifier
-            "true_sentiment": sentiment,    # ground truth, for evaluating your classifier
+            "true_category": category,     
+            "true_sentiment": sentiment,    
         })
     return rows
 
