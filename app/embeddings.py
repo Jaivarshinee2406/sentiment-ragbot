@@ -1,8 +1,3 @@
-"""
-Local vector store using Chroma with a sentence-transformers embedding
-function (no extra API cost/latency for embeddings — only Claude calls
-for classification and RAG generation hit the Anthropic API).
-"""
 import chromadb
 from chromadb.utils import embedding_functions
 from app.config import CHROMA_PERSIST_DIR, CHROMA_COLLECTION
@@ -22,7 +17,6 @@ def get_collection():
 
 def index_ticket(ticket_id: str, text: str, metadata: dict):
     collection = get_collection()
-    # Chroma metadata values must be str/int/float/bool
     safe_meta = {k: (v if isinstance(v, (str, int, float, bool)) else str(v))
                  for k, v in metadata.items()}
     collection.upsert(ids=[ticket_id], documents=[text], metadatas=[safe_meta])
