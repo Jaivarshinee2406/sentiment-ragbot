@@ -1,10 +1,3 @@
-"""
-Quick standalone test — classifies a few sample tickets with Claude,
-indexes them in Chroma, then asks a RAG question. No MySQL required.
-
-Usage:
-    python -m scripts.test_bot
-"""
 from app.sentiment import classify_ticket
 from app.embeddings import index_ticket
 from app.rag import answer_question
