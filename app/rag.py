@@ -1,14 +1,3 @@
-"""
-RAG query pipeline using FREE, locally-run models only:
-1. Embed the question and retrieve top-N similar tickets from Chroma
-   (already using a free local embedding model).
-2. Feed those tickets as context to a small local instruction-following
-   model (flan-t5-small) to generate an answer. No API key, no cost.
-
-Uses the model/tokenizer directly (instead of the `pipeline()` shortcut)
-since pipeline task names have changed across transformers versions and
-this is more reliable for encoder-decoder (T5-style) models.
-"""
 from app.embeddings import query_similar
 
 _tokenizer = None
